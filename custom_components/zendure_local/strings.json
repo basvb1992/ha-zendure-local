@@ -1,0 +1,68 @@
+{
+  "title": "Zendure Local",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Zendure Local toevoegen",
+        "description": "Maakt een lokale ZenSDK-verbinding. Aansturing blijft uit tot je die per batterij inschakelt.",
+        "data": {
+          "host": "IP-adres of hostnaam",
+          "phase": "Aangesloten fase",
+          "profile": "Batterijmodelprofiel"
+        }
+      },
+      "reconfigure": {
+        "title": "Zendure Local opnieuw configureren",
+        "description": "Het nieuwe adres moet hetzelfde serienummer rapporteren.",
+        "data": {
+          "host": "IP-adres of hostnaam",
+          "phase": "Aangesloten fase",
+          "profile": "Batterijmodelprofiel"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan de lokale ZenSDK API niet bereiken.",
+      "identity_missing": "Het apparaat rapporteert geen serienummer.",
+      "identity_mismatch": "Op dit adres staat een ander apparaat.",
+      "phase_in_use": "Deze fase is al aan een andere batterij toegewezen."
+    },
+    "abort": {
+      "already_configured": "Deze batterij is al geconfigureerd.",
+      "cannot_connect": "Kan de gevonden lokale ZenSDK API niet bereiken.",
+      "identity_missing": "Het gevonden apparaat rapporteert geen serienummer.",
+      "reconfigure_successful": "De batterijconfiguratie is bijgewerkt."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Veilige vermogensgrenzen",
+        "description": "Deze grenzen begrenzen elk commando dat Home Assistant naar deze batterij kan sturen. Houd ze tijdens het inregelen op 300-500 W. De P1-sensoren en fasegrens hieronder zijn vooraf ingevuld met dit huishoudens eigen waarden; pas ze aan naar jouw eigen slimme-meterintegratie en gecommitteerde fasegrens.",
+        "data": {
+          "max_charge_w": "Maximaal laadvermogen (W)",
+          "max_discharge_w": "Maximaal ontlaadvermogen (W)",
+          "grid_phase_power_entity": "P1-sensor: vermogen op deze fase",
+          "grid_phase_current_entity": "P1-sensor: stroom op deze fase",
+          "phase_current_limit_a": "Toegestane fasestroom (A)",
+          "phase_operating_margin_a": "Veiligheidsmarge op de fasestroom (A)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "switch": {
+      "ha_control": { "name": "HA-aansturing" }
+    },
+    "number": {
+      "setpoint": { "name": "Commando-vermogen" }
+    },
+    "button": {
+      "emergency_stop": { "name": "Noodstop" }
+    },
+    "binary_sensor": {
+      "command_acknowledged": { "name": "Commando bevestigd" },
+      "command_mismatch": { "name": "Commando wijkt af" }
+    }
+  }
+}

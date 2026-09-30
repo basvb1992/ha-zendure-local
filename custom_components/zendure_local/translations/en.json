@@ -1,0 +1,68 @@
+{
+  "title": "Zendure Local",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add Zendure Local",
+        "description": "Create a local ZenSDK connection. Control stays off until you enable it per battery.",
+        "data": {
+          "host": "IP address or hostname",
+          "phase": "Connected phase",
+          "profile": "Battery model profile"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure Zendure Local",
+        "description": "The new address must report the same serial number.",
+        "data": {
+          "host": "IP address or hostname",
+          "phase": "Connected phase",
+          "profile": "Battery model profile"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the local ZenSDK API.",
+      "identity_missing": "The device does not report a serial number.",
+      "identity_mismatch": "A different device answers at this address.",
+      "phase_in_use": "This phase is already assigned to another battery."
+    },
+    "abort": {
+      "already_configured": "This battery is already configured.",
+      "cannot_connect": "Cannot reach the discovered local ZenSDK API.",
+      "identity_missing": "The discovered device does not report a serial number.",
+      "reconfigure_successful": "The battery configuration has been updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Safe power limits",
+        "description": "These limits bound every command Home Assistant can send to this battery. Keep them at 300-500 W while commissioning. The P1 sensors and phase limit below are pre-filled with this household's own values; change them to match your own smart-meter integration and commissioned phase limit.",
+        "data": {
+          "max_charge_w": "Maximum charge power (W)",
+          "max_discharge_w": "Maximum discharge power (W)",
+          "grid_phase_power_entity": "P1 sensor: power on this phase",
+          "grid_phase_current_entity": "P1 sensor: current on this phase",
+          "phase_current_limit_a": "Allowed phase current (A)",
+          "phase_operating_margin_a": "Safety margin on the phase current (A)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "switch": {
+      "ha_control": { "name": "Home Assistant control" }
+    },
+    "number": {
+      "setpoint": { "name": "Command power" }
+    },
+    "button": {
+      "emergency_stop": { "name": "Emergency stop" }
+    },
+    "binary_sensor": {
+      "command_acknowledged": { "name": "Command acknowledged" },
+      "command_mismatch": { "name": "Command mismatch" }
+    }
+  }
+}
