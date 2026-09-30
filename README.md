@@ -137,6 +137,16 @@ configure correctly.
   guarded `number` entity, which goes through every guard above on every
   write.
 
+### Brand assets
+
+This repository is not (yet) listed in Home Assistant's official
+[brands repository](https://github.com/home-assistant/brands), so it shows
+a generic icon and will fail HACS's own "brands" validation check. This does
+**not** block installation via "Add custom repository" above -- it only
+affects eventual inclusion in HACS's default store and a proper Zendure icon
+in the UI. A PR to `home-assistant/brands` adding
+`custom_integrations/zendure_local/{icon,logo}.png` is a welcome contribution.
+
 ## Contributing
 
 Issues and pull requests welcome. This integration is safety-critical (it
